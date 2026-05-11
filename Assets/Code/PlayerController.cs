@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5;
     public bool isGrounded = false;
     public int deaths = 0;
-    public GameObject RespawnPoint;
+    public GameObject respawnPoint;
     public TextMeshProUGUI deathCountTxt;
     public int points = 0;
     public TextMeshProUGUI pointsTxt;
@@ -45,11 +45,13 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-         // Death
-        if (tagCollision == "Death")
+        var tagCollision = col.transform.tag;
+
+        // Death
+        if (tagCollision == "Death" || tagCollision == "Enemy")
         {
             deaths++;
-            gameObject.transform.position = RespawnPoint.transform.position;
+            gameObject.transform.position = respawnPoint.transform.position;
             deathCountTxt.text = "MUERTES " + deaths;
         }
         
