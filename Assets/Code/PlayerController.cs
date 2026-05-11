@@ -50,23 +50,25 @@ public class PlayerController : MonoBehaviour
         // Death
         if (tagCollision == "Death" || tagCollision == "Enemy")
         {
-            deaths++;
             gameObject.transform.position = respawnPoint.transform.position;
-            deathCountTxt.text = "MUERTES " + deaths;
+            deaths++;
+            if (deathCountTxt != null)
+                deathCountTxt.text = "MUERTES " + deaths;
         }
         
         // Points
         if (tagCollision == "Coin")
         {
             points++;
-            pointsTxt.text = "PUNTOS " + points;
             Destroy(col.gameObject);
+            if (pointsTxt != null)
+                pointsTxt.text = "PUNTOS " + points;
         }
 
         // Finish
-        if (tagCollision == "Finish")
+        if (tagCollision == "EndGame")
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("SampleScene");
         }
     }
 
