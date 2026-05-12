@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     
     public Rigidbody2D rb;
     public float moveSpeed = 6;
-    public float jumpForce = 5;
+    public float jumpForce = 8;
     public bool isGrounded = false;
     public int deaths = 0;
     public GameObject respawnPoint;
